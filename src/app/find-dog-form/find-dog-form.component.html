@@ -1,0 +1,141 @@
+<md-dialog-content>
+<div class="container" dir="rtl">
+
+    <h1>מצא את הכלב המושלם עבורך</h1>
+    <form #ownerForm="ngForm">
+        <div class="form-group">
+            <label for="clientFirstName">שם</label>
+            <input type="text" class="form-control" id="clientFirstName" required pattern="^[א-ת]+$"
+                   minlength="2" maxlength="24" [(ngModel)]="model.clientFirstName" name="clientFirstName" #clientFirstName="ngModel" >
+
+            <div *ngIf="clientFirstName.errors && (clientFirstName.dirty || clientFirstName.touched)"
+                 class="alert alert-danger" id="alert-danger">
+                <div [hidden]="!clientFirstName.errors.required">
+                    מילוי שמך הפרטי הוא שלב הכרחי
+                </div>
+                <div [hidden]="!clientFirstName.errors.minlength">
+שם חייב להכיל לפחות 2 אותיות
+                </div>
+                <div [hidden]="!clientFirstName.errors.maxlength">
+                שדה השם יכול להכיל עד 24 אותיות
+                </div>
+                <div [hidden]="!clientFirstName.errors.pattern">
+                    שם פרטי יכול להכיל רק אותיות בעברית
+                </div>
+            </div>
+        </div>
+
+        <!--last name-->
+
+        <div class="form-group">
+            <label for="clientLastName">שם משפחה</label>
+            <input type="text" class="form-control" id="clientLastName" required pattern="^[א-ת]+$"
+                   minlength="2" maxlength="24" [(ngModel)]="model.clientLastName" name="clientLastName" #clientLastName="ngModel" >
+
+            <div *ngIf="clientLastName.errors && (clientLastName.dirty || clientLastName.touched)"
+                 class="alert alert-danger" id="alert-danger-clientLastName">
+                <div [hidden]="!clientLastName.errors.required">
+                    מילוי שם המשפחה הוא שלב הכרחי
+                </div>
+                <div [hidden]="!clientLastName.errors.minlength">
+                    שם חייב להכיל לפחות 2 אותיות
+                </div>
+                <div [hidden]="!clientLastName.errors.maxlength">
+                    שדה השם יכול להכיל עד 24 אותיות
+                </div>
+                <div [hidden]="!clientLastName.errors.pattern">
+                    שם המשפחה יכול להכיל רק אותיות בעברית
+                </div>
+            </div>
+        </div>
+        <!--Phone-->
+        <div class="form-group">
+            <label for="ownerPhone">מספר טלפון</label>
+            <input type="text" class="form-control" id="ownerPhone" required pattern="^[0-9]+$"
+                   minlength="6" maxlength="10" [(ngModel)]="model.clientPhone" name= "ownerPhone" #ownerPhone="ngModel" >
+            <div *ngIf="ownerPhone.errors && (ownerPhone.dirty || ownerPhone.touched)"
+                 class="alert alert-danger" id="alert-danger-phone">
+                <div [hidden]="!ownerPhone.errors.required">
+                    מספר טלפון הוא שדה חובה
+                </div>
+                <div [hidden]="!ownerPhone.errors.minlength">
+                    מספר טלפון צריך להכיל לפחות 6 ספרות
+                </div>
+                <div [hidden]="!ownerPhone.errors.maxlength">
+                    מספר טלפון יכול להכיל לכול היותר 10 ספרות
+                </div>
+                <div [hidden]="!ownerPhone.errors.pattern">
+                    מספר טלפון יכול להכיל רק ספרות
+                </div>
+            </div>
+        </div>
+
+        <!--age-->
+
+        <div class="form-group">
+            <label for="clientAge">גיל</label>
+            <input type="number" class="form-control" id="clientAge" min="18" required [(ngModel)]="model.clientAge" name= "clientAge">
+        </div>
+
+        <!--familyStatus-->
+
+        <div class="form-group">
+            <label for="clientFamilyStatus">סטטוס משפחתי</label>
+            <select class="form-control" id="clientFamilyStatus" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientFamilyStatus"
+                        name= "clientFamilyStatus" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+        <!--communityType-->
+        <div class="form-group">
+            <label for="clientCommunityType">סוג ישוב</label>
+            <select class="form-control" id="clientCommunityType" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientCommunityType"
+                        name= "clientCommunityType" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+        <!--Area-->
+        <div class="form-group">
+            <label for="clientArea">אזור</label>
+            <select class="form-control" id="clientArea" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientArea"
+                        name= "clientArea" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+        <!--houseType-->
+        <div class="form-group">
+            <label for="clientHouseType">באיזה סוג בית אתה גר?</label>
+            <select class="form-control" id="clientHouseType" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientHouseType"
+                        name= "clientHouseType" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+        <!--Dog care-->
+        <div class="form-group">
+            <label for="clientDogCare">מי יטפל בכלב?</label>
+            <select class="form-control" id="clientDogCare" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientDogCare"
+                        name= "clientDogCare" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+        <!--Dog care-->
+        <div class="form-group">
+            <label for="clientDogLocation">איפה הכלב יגדל?</label>
+            <select class="form-control" id="clientDogLocation" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientDogLocation"
+                        name= "clientDogLocation" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+
+        <!--health status-->
+        <div class="form-group">
+            <label for="clientHealthStatus">מצב בריאותי</label>
+            <select class="form-control" id="clientHealthStatus" required>
+                <option *ngFor="let pow of exampleOptions" [value]="pow" required [(ngModel)]="model.clientHealthStatus"
+                        name= "clientHealthStatus" ngDefaultControl>{{pow}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</md-dialog-content>

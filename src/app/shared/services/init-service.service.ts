@@ -10,7 +10,11 @@ export class InitServiceService{
   constructor(staticCache : StaticDaoService) {
     this.staticDao = staticCache;
   }
+  fetchOptions():string[]{
+    return ['none','Really Smart', 'Super Flexible',
+      'Super Hot', 'Weather Changer'];
 
+  }
   initApp(): void{
     this.staticDao.getSizes();
   }
